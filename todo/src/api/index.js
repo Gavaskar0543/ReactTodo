@@ -24,16 +24,16 @@ const customFetch = async (url, { body, ...customConfig }) => {
     const response = await fetch(url, config);
     const data = await response.json();
 console.log('data',data)
-    if (response.success) {
+    if (response.ok) {
       return {
-        data: data.data,
+        data: data,
         success: true,
       };
     }
 
     throw new Error(data.message);
   } catch (error) {
-    console.error('error',error.message);
+    console.error('error');
     return {
       message: error.message,
       success: false,
