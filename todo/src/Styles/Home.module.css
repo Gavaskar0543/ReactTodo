@@ -1,7 +1,17 @@
+.brand{
+    text-align: center;
+    font-weight: 100;
+    letter-spacing: 2px;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.3);
+      
+      
+}
 .popins{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: 2px;
     font-weight: 400;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.3);
+
 }
 .taskDiv{
     width:40%;

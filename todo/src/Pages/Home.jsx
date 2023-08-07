@@ -1,10 +1,13 @@
 
 import React from 'react';
+import NewTask from '../Components/NewTask';
 import Style from '../Styles/Home.module.css';
 function Home({todo}) {
    
     return (
         <>
+        <h1 className={Style.brand}>ToDos!</h1>
+        <NewTask />
             <h1 className={Style.popins}>Tasks</h1>
              {todo.map((todo) => 
            
