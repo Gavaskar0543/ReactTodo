@@ -40,8 +40,17 @@ const customFetch = async (url, { body, ...customConfig }) => {
   }
 };
 
+//show todos from db
 export const getTodos = () => {
   return customFetch(API_URLS.todos(), {
     method: 'GET',
   });
 };
+
+//add new todos
+export const postTodos = (task) =>{
+  return customFetch(API_URLS.addtodos(),{
+    method:'POST',
+    body:{task}
+  })
+}
