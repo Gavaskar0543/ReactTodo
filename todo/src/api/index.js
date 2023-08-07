@@ -1,8 +1,9 @@
 import { API_URLS } from "../utils/constants";
+
 const customFetch = async (url, { body, ...customConfig }) => {
   //header
   const headers = {
-    "content-type ": "Application/x-www-form-urlencoded",
+    "content-type": "Application/x-www-form-urlencoded", // Removed the extra space after "content-type"
   };
 
   //config
@@ -16,25 +17,32 @@ const customFetch = async (url, { body, ...customConfig }) => {
 
   //body
   if (body) {
-    config.body = json.stringfy(body);
+    config.body = JSON.stringify(body); // Corrected the typo here, should be JSON.stringify
   }
 
   try {
     const response = await fetch(url, config);
     const data = await response.json();
-    console.log(data.data);
-    if (data.success) {
+console.log('data',data)
+    if (response.success) {
       return {
         data: data.data,
         success: true,
       };
     }
+
     throw new Error(data.message);
   } catch (error) {
-    console.log("error in fetching api");
+    console.error('error',error.message);
     return {
       message: error.message,
       success: false,
     };
   }
+};
+
+export const getTodos = () => {
+  return customFetch(API_URLS.todos(), {
+    method: 'GET',
+  });
 };
