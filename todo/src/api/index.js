@@ -1,3 +1,4 @@
+import { API_URLS } from "../utils/constants";
 const customFetch = async (url, { body, ...customConfig }) => {
   //header
   const headers = {
@@ -21,6 +22,7 @@ const customFetch = async (url, { body, ...customConfig }) => {
   try {
     const response = await fetch(url, config);
     const data = await response.json();
+    console.log(data.data);
     if (data.success) {
       return {
         data: data.data,
