@@ -18,15 +18,24 @@ function NewTask(props) {
       return;
     }
     const response = await postTodos(NewTask);
-    if(response.ok){
+    if(response.success){
       toast.success('task added ')
+      return{
+        data:newTask,
+        success:true
+      }
+      
     }
     else{
-     
+      setAdd(false);
       toast.error('toast not added!')
+      return{
+        message:"no task added",
+        success:fasle
+      }
      
     }
-    setAdd(fasle);
+    setAdd(false);
 
    
   }

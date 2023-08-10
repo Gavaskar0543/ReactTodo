@@ -3,7 +3,7 @@ import { API_URLS } from "../utils/constants";
 const customFetch = async (url, { body, ...customConfig }) => {
   //header
   const headers = {
-    "content-type": "Application/x-www-form-urlencoded", // Removed the extra space after "content-type"
+    'Content-type': 'application/json; charset=UTF-8', // Removed the extra space after "content-type"
   };
 
   //config
@@ -52,5 +52,13 @@ export const postTodos = (task) =>{
   return customFetch(API_URLS.addtodos(),{
     method:'POST',
     body:{task}
+  })
+} 
+
+//delte todos
+
+export const destroyTodos = (id) => {
+  return customFetch(API_URLS.deletetodos(id),{
+    method:'DELETE'
   })
 }

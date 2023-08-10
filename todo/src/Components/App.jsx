@@ -13,6 +13,7 @@ function App() {
       if (response.success) {
         setLoading(false);
         setTodos(response.data.slice(0,10));
+        console.log(todos)
        
       }
     };
