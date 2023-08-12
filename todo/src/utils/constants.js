@@ -1,8 +1,8 @@
-const ROOT_URL = ' https://jsonplaceholder.typicode.com/todos';
+const ROOT_URL = 'http://localhost:8000/api/v1';
 
 //api urls
 export const API_URLS = {
-todos : () => ROOT_URL,
-addtodos: () =>`${ROOT_URL}`,
-deletetodos :(id) => `${ROOT_URL}/${id}`
+todos : () => `${ROOT_URL}/tasks`,
+addtodos: () =>`${ROOT_URL}/newTask`,
+deletetodos :(id) => `${ROOT_URL}/destroy${id}`
 }

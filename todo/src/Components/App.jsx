@@ -9,10 +9,11 @@ function App() {
   useEffect(() => {
     const fetchTodos = async () => {
       const response = await getTodos();
+      console.log(response);
 
       if (response.success) {
         setLoading(false);
-        setTodos(response.data.slice(0,10));
+        setTodos(response.data.data.slice(0,10));
         console.log(todos)
        
       }
