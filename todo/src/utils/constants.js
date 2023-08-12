@@ -4,5 +4,5 @@ const ROOT_URL = 'http://localhost:8000/api/v1';
 export const API_URLS = {
 todos : () => `${ROOT_URL}/tasks`,
 addtodos: () =>`${ROOT_URL}/newTask`,
-deletetodos :(id) => `${ROOT_URL}/destroy${id}`
+deletetodos :(id) => `${ROOT_URL}/destroy/${id}`
 }

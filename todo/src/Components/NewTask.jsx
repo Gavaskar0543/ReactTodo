@@ -1,47 +1,39 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import Styles from "../Styles/NewTask.module.css";
 import { postTodos } from "../api";
 
 function NewTask(props) {
   const [newTask, setNewTask] = useState("");
   const [add, setAdd] = useState(false);
- 
-  const handleSubmit = async (e) =>{
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setAdd(true);
    
-    if(!newTask){
+    if (!newTask) {
       toast.error('Give me some task to add!');
-     setAdd(false);
+      setAdd(false);
       return;
     }
-    const response = await postTodos({title:newTask});
-    if(response.success){
-     
-     setAdd(false)
-      toast.success('task added ')
-      return{
-        data:"task added",
-        success:true
-      }
-      
-    }
-    else{
-      setAdd(false);
-      toast.error('toast not added!')
-      return{
-        message:"no task added",
-        success:fasle
-      }
-     
-    }
-    setAdd(false);
 
-   
+    const response = await postTodos( newTask ); // Corrected parameter
+
+    if (response.success) {
+      setAdd(false);
+      toast.success('Task added');
+      
+    
+      setNewTask(""); // Clear the input field
+     
+    } else {
+      setAdd(false);
+      toast.error('Task not added!');
+    }
   }
+
   return (
     <div>
       <ToastContainer />
@@ -54,9 +46,7 @@ function NewTask(props) {
           placeholder="Add task"
         />
         <span>
-          <button disabled={add}>{
-            add ? 'adding':'add'
-          }</button>
+          <button disabled={add}>{add ? 'Adding' : 'Add'}</button>
         </span>
       </form>
     </div>
