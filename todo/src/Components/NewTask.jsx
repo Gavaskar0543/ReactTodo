@@ -1,7 +1,7 @@
 import React, { useState ,useEffect} from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Styles from "../Styles/NewTask.module.css";
+import Styles from "../Styles/Home.module.css";
 import { postTodos } from "../api";
 
 function NewTask(props) {
@@ -37,17 +37,21 @@ function NewTask(props) {
   return (
     <div>
       <ToastContainer />
-      <form onSubmit={handleSubmit}>
+      <form className={Styles.form} onSubmit={handleSubmit}>
+       <div>
         <input
           type="text"
           name="title"
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
-          placeholder="Add task"
+          placeholder="Enter Task"
         />
-        <span>
+        
+        </div>
+        <div>
+       
           <button disabled={add}>{add ? 'Adding' : 'Add'}</button>
-        </span>
+       </div>
       </form>
     </div>
   );

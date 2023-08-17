@@ -12,11 +12,11 @@ function Home() {
   const [todos, setTodos] = useState([]);
   const [loading,setLoading] = useState(true)
   const [update,setUpdate] =useState(false);
-
+let updateTask;
   const handleUpdate = (id)=>{
-    const updateTask = todos.filter((todoItem) => todoItem._id === id);
-           console.log(updateTask)
-          setUpdate(true)
+    setUpdate(true);
+     updateTask = todos.filter((todoItem) => todoItem._id === id);
+     
   }
   useEffect(() => {
     const fetchTodos = async () => {
@@ -55,26 +55,32 @@ function Home() {
  
   return (
     <>
-    {update ? <input type="text" />: <></>}
-      <h1 className={Style.brand}>ToDos!</h1>
+    <div className={Style.todoContainer}>
+      <div>
+      <h1 className={Style.heading} >Todo List App</h1>
       <NewTask todos={todos} />
-      <h1 className={Style.popins}>Tasks</h1>
+     
+      
+      {update ? <input type="text" / >: <></>}
+      
       {todos.map((todoItem) => (
-        <div className={Style.taskDiv} key={todoItem._id}>
+        <div  key={todoItem._id}>
           <FontAwesomeIcon onClick={() => DeleteTask(todoItem._id)} icon={faTrash} />
           <p>{todoItem.createdAt.split("T")[0]}</p>
         <p>{todoItem.title} <FontAwesomeIcon onClick={()=>handleUpdate(todoItem._id)} icon={faPencil} /> </p>
           {todoItem.completed ? (
-            <h4 className={Style.taskDone}>
+            <h4>
               <FontAwesomeIcon icon={faFingerprint} />
             </h4>
           ) : (
-            <h4 className={Style.taskNotDone}>
+            <h4 >
               <FontAwesomeIcon icon={faWindowClose} />
             </h4>
           )}
         </div>
       ))}
+      </div>
+      </div>
     </>
   );
 }
