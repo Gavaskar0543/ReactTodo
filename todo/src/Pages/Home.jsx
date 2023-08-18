@@ -30,11 +30,30 @@ function Home() {
       }
     };
     fetchTodos();
-  }, [todos]);
+  }, []);
+  
 
   if (loading) {
     return <Loader />;
   }
+
+  const handleCheckboxChange = (index) => {
+    // Create a copy of the todos array to modify
+    const updatedTodos = [...todos];
+
+    // Find the todo item by its index
+    const todoToUpdate = updatedTodos.find((task) => task._id === index);
+
+    if (todoToUpdate) {
+        // Toggle the completed property from false to true
+        todoToUpdate.completed = true;
+
+        // Update the state using the modified array
+        setTodos(updatedTodos);
+    }
+};
+
+
   const DeleteTask = async (id) => {
     const response = await destroyTodos(id);
 
@@ -60,9 +79,10 @@ function Home() {
                 className="flex border border-3 mb-4 h-20 justify-between items-center text-lg capitalize"
                 key={todoItem._id}
               >
-               <div> <input className="h-5 w-10" type="checkbox" /></div>
+               <div> <input className="h-5 w-10" type="checkbox"  checked={todoItem.completed}   onChange={() => handleCheckboxChange(todoItem._id)}
+ /></div>
                <div>
-                 <p>{todoItem.title}</p>
+               <p className={todoItem.completed ? 'line-through ml-2' : 'ml-2'}> {todoItem.title} </p>
                 </div>
                 <div className="flex justify-evenly w-20">
                 <div>  <FontAwesomeIcon style={{color:"red"}} icon={faPencil}/></div>

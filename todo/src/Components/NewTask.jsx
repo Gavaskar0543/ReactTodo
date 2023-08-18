@@ -8,7 +8,7 @@ function NewTask(props) {
   const [newTask, setNewTask] = useState("");
   const [add, setAdd] = useState(false);
 
-
+useEffect(() => {},[newTask])
   const handleSubmit = async (e) => {
     e.preventDefault();
     setAdd(true);
