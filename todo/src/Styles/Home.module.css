@@ -1,8 +1,4 @@
-*{
-    background-color: black;
-    color:white;
 
-}
 .todoContainer{
    width: 100vw;
    height:100vh;
@@ -10,20 +6,26 @@
    justify-content: center;
    margin-top:3%;
 }
-.heading{
-    letter-spacing: 2px;
-}
+
 
 .form{
-    border:1px solid white;
+   
     margin-top:10%;
     display: flex;
-    width:50vw;
+    width:55vw;
     justify-content: space-between;
+    align-items: center;
 }
 .form input{
     border:3px solid whitesmoke;
-    width:40vw;
+    width:48vw;
     height:3rem;
     background-color: white;
+}
+.form > div:last-child {
+  background-color: saddlebrown;
+  
+  
+  
+ 
 }
