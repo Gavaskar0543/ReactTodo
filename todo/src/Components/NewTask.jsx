@@ -3,22 +3,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Style from "../Styles/Home.module.css";
 import { postTodos } from "../api";
-function NewTask(props) {
+function NewTask({ todos, setTodos, updateState, setUpdateState }) {
  
   const [newTask, setNewTask] = useState("");
   const [add, setAdd] = useState(false);
-  const [todo,setTodo] = useState(props.todo);
 
-  useEffect(() => {
-    
-    if(add){
-    setTodo([...todo,NewTask]);
-    }
-  
-  }, [add]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setAdd(true);
+    setUpdateState(!updateState);
    
     if (!newTask) {
       toast.error('Give me some task to add!');

@@ -22,6 +22,8 @@ function Home() {
     updateTask = todos.filter((todoItem) => todoItem._id === id);
   };
 
+
+ 
   
   useEffect(() => {
     const fetchTodos = async () => {
@@ -33,7 +35,7 @@ function Home() {
       }
     };
     fetchTodos();
-  }, []);
+  }, [update]);
 
 
   if (loading) {
@@ -75,7 +77,7 @@ function Home() {
         <div>
           <h1 className="text-4xl text-center">Todo List App</h1>
      
-            <NewTask todo={todos} />
+          <NewTask todos={todos} setTodos={setTodos} updateState={update} setUpdateState={setUpdate} />
           <div className="mt-4 border berder-2 flex-col gap-10">
             {todos.map((todoItem) => (
               <div
