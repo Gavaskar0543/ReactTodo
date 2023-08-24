@@ -4,28 +4,25 @@ import {
   faTrash,
   faPencil,
 } from "@fortawesome/free-solid-svg-icons";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import { destroyTodos } from "../api";
 import Style from "../Styles/Home.module.css";
 import { getTodos } from "../api";
-import { postTodos } from "../api";
 import Loader from "../Components/Loader";
+import NewTask from "../Components/NewTask";
 
 function Home() {
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [update, setUpdate] = useState(false);
-  const [newTask, setNewTask] = useState("");
-  const [add, setAdd] = useState(false);
-
+ 
  
   let updateTask;
   const handleUpdate = (id) => {
     setUpdate(true);
     updateTask = todos.filter((todoItem) => todoItem._id === id);
   };
+
+  
   useEffect(() => {
     const fetchTodos = async () => {
       const response = await getTodos();
@@ -37,33 +34,8 @@ function Home() {
     };
     fetchTodos();
   }, []);
-  
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setAdd(true);
-   
-    if (!newTask) {
-      toast.error('Give me some task to add!');
-      setAdd(false);
-      return;
-    }
-
-    const response = await postTodos( newTask ); // Corrected parameter
-
-    if (response.success) {
-      setAdd(false);
-      toast.success('Task added');
-      
-    
-      setNewTask(""); // Clear the input field
-     
-    } else {
-      setAdd(false);
-      toast.error('Task not added!');
-    }
-  }
   if (loading) {
     return <Loader />;
   }
@@ -102,26 +74,8 @@ function Home() {
       <div className={Style.todoContainer}>
         <div>
           <h1 className="text-4xl text-center">Todo List App</h1>
-          <div>
-      <ToastContainer />
-      <form className={Style.form} onSubmit={handleSubmit}>
-       <div>
-        <input
-          type="text"
-          name="title"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          placeholder="Enter Task"
-        />
-        
-        </div>
-        <div>
-       
-          <button disabled={add}>{add ? 'Adding' : 'Add'}</button>
-       </div>
-      </form>
-    </div>
-
+     
+            <NewTask todo={todos} />
           <div className="mt-4 border berder-2 flex-col gap-10">
             {todos.map((todoItem) => (
               <div
