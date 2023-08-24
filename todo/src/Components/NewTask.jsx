@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
 import Style from "../Styles/Home.module.css";
 import { postTodos } from "../api";
 function NewTask({ todos, setTodos, updateState, setUpdateState }) {
@@ -57,5 +58,13 @@ function NewTask({ todos, setTodos, updateState, setUpdateState }) {
    
   );
 }
+
+// Define PropTypes for the NewTask component
+NewTask.propTypes = {
+  todos: PropTypes.array.isRequired,
+  setTodos: PropTypes.func.isRequired,
+  updateState: PropTypes.bool.isRequired,
+  setUpdateState: PropTypes.func.isRequired,
+};
 
 export default NewTask;
