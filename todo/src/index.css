@@ -1,0 +1,10 @@
+*{
+    background:#F0B86E;
+}
+#todoList:nth-child(odd){
+    background-color: whitesmoke;
+   
+}
+#todoList:nth-child(odd) *{
+    background: none;
+}

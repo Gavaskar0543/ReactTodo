@@ -7,6 +7,7 @@ import { getTodos } from "../api";
 import Loader from "../Components/Loader";
 import NewTask from "../Components/NewTask";
 import UpdateWindow from "../Components/UpdateWindow";
+import '../index.css';
 
 function Home() {
   const [todos, setTodos] = useState([]);
@@ -40,6 +41,7 @@ function Home() {
     try {
       const response = await markDone(id);
       if (response.success) {
+       
         // Update the todos array to reflect the completed status change
         const updatedTodos = todos.map((todoItem) => {
           if (todoItem._id === id) {
@@ -62,7 +64,7 @@ function Home() {
 
   const DeleteTask = async (id) => {
     const response = await destroyTodos(id);
-
+  
     if (response.success) {
       console.log("Deleted!");
       const updatedTodo = todos.filter((todoItem) => todoItem._id !== id);
@@ -93,7 +95,7 @@ function Home() {
      
           <div className={Style.todoContainer}>
           <div>
-            <h1 className="text-4xl text-center">Todo List App</h1>
+            <h1 className="text-6xl text-center">Todo List App</h1>
           <NewTask
             todos={todos}
             setTodos={setTodos}
@@ -101,10 +103,10 @@ function Home() {
             setUpdateState={setUpdate}
           />
          
-          <div className="mt-4 border berder-2 flex-col gap-10">
+          <div className="mt-4  flex-col gap-10">
             {todos.map((todoItem) => (
-              <div
-                className="flex border border-3 mb-4 h-20 justify-between items-center text-lg capitalize"
+              <div id="todoList"
+                className="flex p-2 border border-3 mb-4 h-20 justify-between items-center text-lg capitalize"
                 key={todoItem._id}
               >
                 <div>
@@ -123,7 +125,7 @@ function Home() {
                  
                   <p
                     className={
-                      todoItem.completed ? "line-through ml-2" : "ml-2"
+                      todoItem.completed ? "line-through ml-2" : "ml-2 text-2xl"
                     }
                   >
                     {" "}

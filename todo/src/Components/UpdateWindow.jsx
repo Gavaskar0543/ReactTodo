@@ -42,6 +42,7 @@ function UpdateWindow({editedTitle,setEditedTitle,todos,setTodos,setShowUpdateWi
     );
 }
 const StyledHeading = Styled.h1`
+background:none;
 
 
 `
@@ -53,16 +54,19 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 background-color:wheat;
+
 div{
    
     width:60%;
    display:flex;
    flex-direction:column;
+   background:none;
 input{
    width:100%;
    height:3.4rem;
    padding:2%;
    font-size:2rem;
+   background:whitesmoke;
 }
 button{
     border:2px solid wheat;

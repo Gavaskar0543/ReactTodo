@@ -1,6 +1,6 @@
 
 .todoContainer{
-   width: 100vw;
+   width: 95vw;
    height:100vh;
    display: flex;
    justify-content: center;
@@ -13,19 +13,26 @@
     margin-top:10%;
     display: flex;
     width:55vw;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
+   
 }
 .form input{
     border:3px solid whitesmoke;
     width:48vw;
     height:3rem;
+    padding:4px;
+    font-size:1.4rem;
     background-color: white;
 }
-.form > div:last-child {
-  background-color: wheat;
-  
-  
-  
- 
+.btnDiv{
+  margin-left:-6%;
+  border:3px solid whitesmoke;
+}
+.form button{
+  font-size:1.4rem;
+  height: 3rem;
+  padding:4px;
+  width:4rem;
+  background:#FAF1E4;
 }
