@@ -92,3 +92,17 @@ export const destroyTodos = (id) => {
     method:'DELETE'
   })
 }
+//mark done
+export const markDone = (id) => {
+  return customFetch(API_URLS.toggleCompleted(id),{
+    method:'POST'
+  })
+}
+
+//update task
+export const updateTodoTitle = (id,task) =>{
+  return customFetch(API_URLS.updateTask(id),{
+    method: 'PUT',
+    body: { title:task,completed:false },
+  })
+}

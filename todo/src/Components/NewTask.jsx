@@ -51,7 +51,7 @@ function NewTask({ todos, setTodos, updateState, setUpdateState }) {
       </div>
       <div>
      
-        <button disabled={add}>{add ? 'Adding' : 'Add'}</button>
+        <button className=' border border-4 text-lg' disabled={add}>{add ? 'Adding' : 'Add'}</button>
      </div>
     </form>
   </div>
